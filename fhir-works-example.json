@@ -1,0 +1,25 @@
+{
+  "server": "SERVER_ENDPOINT",
+  "module": "smart",
+  "arguments": {
+    "client_id": "CLIENT_ID",
+    "confidential_client": true,
+    "client_secret": "CLIENT_SECRET",
+    "oauth_authorize_endpoint": "AUTH_ENDPOINT",
+    "oauth_token_endpoint": "TOKEN_ENDPOINT",
+    "scopes": "launch launch/patient offline_access openid profile user/*.* patient/*.* patient_selection",
+    "standalone_launch_script": [
+      {"cmd": "send_keys", "type": "id", "find_value": "okta-signin-username", "value": "AUTH_USERNAME"},
+      {"cmd": "send_keys", "type": "id", "find_value": "okta-signin-password", "value": "AUTH_PASSWORD"},
+      {"cmd": "click", "type": "id", "find_value": "okta-signin-submit"},
+      {"cmd": "click", "type": "name", "find_value": "patient", "index":  0},
+      {"cmd": "click", "type": "tag_name", "find_value": "button"}
+    ]
+  },
+
+  "sequences": [
+    "SMARTDiscoverySequence",
+    "ManualRegistrationSequence",
+    "StandaloneLaunchSequence"
+  ]
+}
